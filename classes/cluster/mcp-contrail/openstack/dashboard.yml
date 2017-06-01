@@ -1,0 +1,14 @@
+classes:
+- system.horizon.server.single
+#- system.horizon.server.plugin.theme
+- system.horizon.server.plugin.contrail
+- system.horizon.server.plugin.overrides
+- cluster.mcp-contrail.infra
+parameters:
+  _param:
+    horizon_site_branding: OpenStack Dashboard
+    # horizon_dashboard_theme: mirantis
+  linux:
+    network:
+      interface:
+        ens3: ${_param:linux_single_interface}
