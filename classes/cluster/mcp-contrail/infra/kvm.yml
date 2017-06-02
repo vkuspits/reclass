@@ -33,55 +33,55 @@ parameters:
       size: #RAM 4096,8192,16384,32768,65536
       ##Default production sizing
         openstack.control:
-          cpu: 8
-          ram: 32768
+          cpu: 2
+          ram: 6146
           disk_profile: small
           net_profile: default
         openstack.database:
-          cpu: 8
-          ram: 16384
+          cpu: 2
+          ram: 4096
           disk_profile: large
           net_profile: default
         openstack.message_queue:
-          cpu: 8
-          ram: 32768
+          cpu: 1
+          ram: 4096
           disk_profile: small
           net_profile: default
         openstack.telemetry:
-          cpu: 8
-          ram: 32768
+          cpu: 1
+          ram: 4096
           disk_profile: xxlarge
           net_profile: default
         openstack.proxy:
-          cpu: 4
-          ram: 8192
+          cpu: 1
+          ram: 2048
           disk_profile: small
           net_profile: default
         opencontrail.control:
-          cpu: 8
-          ram: 32768
+          cpu: 2
+          ram: 9216
           disk_profile: small
           net_profile: default
         opencontrail.analytics:
-          cpu: 8
-          ram: 32768
+          cpu: 1
+          ram: 4096
           disk_profile: large
           net_profile: default
-        stacklight.log:
-          cpu: 4
-          ram: 8192
-          disk_profile: xxlarge
-          net_profile: default
-        stacklight.server:
-          cpu: 4
-          ram: 8192
-          disk_profile: small
-          net_profile: default
-        stacklight.telemetry:
-          cpu: 4
-          ram: 8192
-          disk_profile: xxlarge
-          net_profile: default
+#        stacklight.log:
+#          cpu: 1
+#          ram: 2048
+#          disk_profile: xxlarge
+#          net_profile: default
+#        stacklight.server:
+#          cpu: 1
+#          ram: 2048
+#          disk_profile: small
+#          net_profile: default
+#        stacklight.telemetry:
+#          cpu: 1
+#          ram: 2048
+#          disk_profile: xxlarge
+#          net_profile: default
       cluster:
         internal:
           node:
