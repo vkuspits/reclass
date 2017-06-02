@@ -22,8 +22,8 @@ parameters:
     cluster_public_host: ${_param:openstack_proxy_address}
     infra_kvm_address: 10.0.1.240
     infra_kvm_node01_address: 10.0.1.4
-    infra_kvm_node02_address: 10.0.1.6
-    infra_kvm_node03_address: 10.0.1.5
+    infra_kvm_node02_address: 10.0.1.5
+    infra_kvm_node03_address: 10.0.1.6
     infra_kvm_node01_deploy_address: 10.0.0.14
     infra_kvm_node02_deploy_address: 10.0.0.16
     infra_kvm_node03_deploy_address: 10.0.0.17
