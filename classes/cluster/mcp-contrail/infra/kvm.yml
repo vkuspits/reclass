@@ -1,4 +1,5 @@
-classes:- system.linux.system.repo.mcp.openstack
+classes:
+- system.linux.system.repo.mcp.openstack
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.ubuntu
 - system.linux.system.repo.glusterfs
@@ -59,7 +60,7 @@ parameters:
           net_profile: default
         opencontrail.control:
           cpu: 2
-          ram: 9216
+          ram: 7170
           disk_profile: small
           net_profile: default
         opencontrail.analytics:
@@ -67,21 +68,21 @@ parameters:
           ram: 4096
           disk_profile: large
           net_profile: default
-#        stacklight.log:
-#          cpu: 1
-#          ram: 2048
-#          disk_profile: xxlarge
-#          net_profile: default
-#        stacklight.server:
-#          cpu: 1
-#          ram: 2048
-#          disk_profile: small
-#          net_profile: default
-#        stacklight.telemetry:
-#          cpu: 1
-#          ram: 2048
-#          disk_profile: xxlarge
-#          net_profile: default
+        stacklight.log:
+          cpu: 1
+          ram: 2048
+          disk_profile: xxlarge
+          net_profile: default
+        stacklight.server:
+          cpu: 1
+          ram: 2048
+          disk_profile: small
+          net_profile: default
+        stacklight.telemetry:
+          cpu: 1
+          ram: 2048
+          disk_profile: xxlarge
+          net_profile: default
       cluster:
         internal:
           node:
