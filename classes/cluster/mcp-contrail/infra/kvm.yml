@@ -117,25 +117,25 @@ parameters:
   virt:
     nic:
       default:
-        eth1:
+        ens3:
           bridge: br_mgm
-        eth0:
+        ens4:
           bridge: br_ctl
   linux:
     network:
       interface:
-        eth0:
+        ens3:
           enabled: true
           type: eth
           proto: manual
           name: ${_param:deploy_nic}
-        eth1:
+        ens4:
           enabled: true
           type: slave
           proto: manual
           name: ${_param:primary_first_nic}
           master: bond0
-        eth2:
+        ens5:
           enabled: true
           type: slave
           proto: manual
