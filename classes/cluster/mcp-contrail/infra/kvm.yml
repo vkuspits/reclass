@@ -129,18 +129,19 @@ parameters:
           type: eth
           proto: manual
           name: ${_param:deploy_nic}
+          mtu: 1450
         ens4:
           enabled: true
           type: slave
           proto: manual
           name: ${_param:primary_first_nic}
-          master: bond0
+          mtu: 1450
         ens5:
           enabled: true
           type: slave
           proto: manual
           name: ${_param:primary_second_nic}
-          master: bond0
+          mtu: 1450
         br_mgm:
           enabled: true
           proto: static
@@ -153,22 +154,7 @@ parameters:
           - ${_param:dns_server02}
           use_interfaces:
           - ${_param:deploy_nic}
-        bond0:
-          enabled: true
-          proto: manual
-          type: bond
-          use_interfaces:
-          - ${_param:primary_first_nic}
-          - ${_param:primary_second_nic}
-          slaves: ${_param:primary_first_nic} ${_param:primary_second_nic}
-          mode: active-backup
-        bond0.1:
-          name: bond0.${_param:control_vlan}
-          enabled: true
-          proto: manual
-          type: vlan
-          use_interfaces:
-          - bond0
+          mtu: 1450
         br_ctl:
           enabled: true
           type: bridge
@@ -176,7 +162,8 @@ parameters:
           address: ${_param:single_address}
           netmask: ${_param:control_network_netmask}
           use_interfaces:
-          - bond0.${_param:control_vlan}
+          - ${_param:primary_first_nic}
+          mtu: 1450
   #   system:
   #     package:
   #       linux-image-4.8.0-39-generic:
