@@ -1,0 +1,4 @@
+classes:
+  - system.docker.swarm.manager
+  - cluster.mcp-upgrade.infra
+  - cluster.mcp-upgrade.cicd.control
