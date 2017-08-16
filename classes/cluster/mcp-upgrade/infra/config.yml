@@ -1,25 +1,22 @@
 classes:
 - system.linux.system.repo.mcp.salt
-- system.linux.system.repo.mcp.extra
 - system.linux.system.repo.ubuntu
-- system.linux.system.repo.glusterfs
-- system.linux.system.repo.glusterfs
+#- system.linux.system.repo.glusterfs
 - system.openssh.client.lab
-- system.glusterfs.client.cluster
-- system.glusterfs.client.volume.salt_pki
+#- system.glusterfs.client.cluster
+#- system.glusterfs.client.volume.salt_pki
 - system.salt.master.pkg
 - system.salt.minion.ca.salt_master
 - system.salt.master.api
 - system.reclass.storage.salt
 - system.reclass.storage.system.physical_control_cluster
-- system.reclass.storage.system.opencontrail_analytics_cluster
-- system.reclass.storage.system.opencontrail_control_cluster
 - system.reclass.storage.system.openstack_control_cluster
 - system.reclass.storage.system.openstack_proxy_cluster
 - system.reclass.storage.system.openstack_database_cluster
 - system.reclass.storage.system.openstack_message_queue_cluster
 - system.reclass.storage.system.openstack_telemetry_cluster
-- cluster.mcp-contrail.infra
+- system.reclass.storage.system.cicd_control_cluster
+- cluster.mcp-upgrade.infra
 parameters:
   _param:
     salt_master_base_environment: prd
@@ -29,7 +26,7 @@ parameters:
     single_address: ${_param:infra_config_address}
     deploy_address: ${_param:infra_config_deploy_address}
     linux_system_codename: xenial
-    salt_api_password_hash: "$6$tfEGMNSa$C/nJ7xGD3FuAzoaOHjMb6YHOYJuIPCl9gQflesgFcPVaR.kKJ5qBmfHjyW6Db32jESje10CdnQkoza.cBrByw."
+    salt_api_password_hash: "$6$DKzGzwhm$NmvCmsepyM9yxV.Uh06u3wN7nMGxYATLi3wMyRvAlskIpl3DLsmEUzxam8ngIyW3Bo./1wl8XgSfGkTjDLwt3/"
     salt_master_host: ${_param:infra_config_address}
   reclass:
     storage:
@@ -55,34 +52,22 @@ parameters:
         openstack_telemetry_node01:
           params:
             linux_system_codename: xenial
+            keepalived_vip_priority: 100
         openstack_telemetry_node02:
           params:
             linux_system_codename: xenial
+            keepalived_vip_priority: 101
         openstack_telemetry_node03:
           params:
             linux_system_codename: xenial
-        openstack_message_queue_node01:
-          params:
-            linux_system_codename: xenial
-        openstack_message_queue_node02:
-          params:
-            linux_system_codename: xenial
-        openstack_message_queue_node03:
-          params:
-            linux_system_codename: xenial
-        openstack_proxy_node01:
-          params:
-            linux_system_codename: xenial
-        openstack_proxy_node02:
-          params:
-            linux_system_codename: xenial
+            keepalived_vip_priority: 102
         openstack_compute_rack01:
           name: ${_param:openstack_compute_rack01_hostname}<<count>>
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.openstack.compute
           repeat:
-            count: 1
+            count: 100
             start: 1
             digits: 3
             params:

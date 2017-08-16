@@ -1,6 +1,5 @@
 classes:
-- system.linux.system.repo.mcp.extra
-- cluster.mcp-contrail.infra
+- cluster.mcp-upgrade.infra
 parameters:
   linux:
     network:
