@@ -25,41 +25,41 @@ parameters:
     cluster_node03_address: ${_param:infra_kvm_node03_address}
     keepalived_vip_interface: br_ctl
     keepalived_vip_virtual_router_id: 69
-    deploy_nic: eth0
-    primary_first_nic: eth1
-    primary_second_nic: eth2
+    deploy_nic: ens3
+    primary_first_nic: ens4
+    primary_second_nic: ens5
   salt:
     control:
       size: #RAM 4096,8192,16384,32768,65536
       ##Default production sizing
         openstack.control:
-          cpu: 8
-          ram: 32768
+          cpu: 4
+          ram: 10240
           disk_profile: small
           net_profile: default
         openstack.database:
-          cpu: 8
-          ram: 16384
+          cpu: 2
+          ram: 6144
           disk_profile: large
           net_profile: default
         openstack.message_queue:
-          cpu: 8
-          ram: 32768
+          cpu: 2
+          ram: 6144
           disk_profile: small
           net_profile: default
         openstack.telemetry:
-          cpu: 8
-          ram: 32768
+          cpu: 2
+          ram: 4048
           disk_profile: xxlarge
           net_profile: default
         openstack.proxy:
-          cpu: 4
-          ram: 8192
+          cpu: 2
+          ram: 2048
           disk_profile: small
           net_profile: default
         opencontrail.control:
-          cpu: 8
-          ram: 32768
+          cpu: 1
+          ram: 6144
           disk_profile: small
           net_profile: default
         opencontrail.analytics:
@@ -94,9 +94,9 @@ parameters:
   virt:
     nic:
       default:
-        eth1:
-          bridge: br_mgm
         eth0:
+          bridge: br_mgm
+        eth1:
           bridge: br_ctl
   linux:
     network:
@@ -111,13 +111,12 @@ parameters:
           type: slave
           proto: manual
           name: ${_param:primary_first_nic}
-          master: bond0
-        eth2:
-          enabled: true
-          type: slave
-          proto: manual
-          name: ${_param:primary_second_nic}
-          master: bond0
+#        eth2:
+#          enabled: true
+#          type: slave
+#          proto: manual
+#          name: ${_param:primary_second_nic}
+#          master: bond0
         br_mgm:
           enabled: true
           proto: static
@@ -130,22 +129,22 @@ parameters:
           - ${_param:dns_server02}
           use_interfaces:
           - ${_param:deploy_nic}
-        bond0:
-          enabled: true
-          proto: manual
-          type: bond
-          use_interfaces:
-          - ${_param:primary_first_nic}
-          - ${_param:primary_second_nic}
-          slaves: ${_param:primary_first_nic} ${_param:primary_second_nic}
-          mode: active-backup
-        bond0.1:
-          name: bond0.${_param:control_vlan}
-          enabled: true
-          proto: manual
-          type: vlan
-          use_interfaces:
-          - bond0
+#        bond0:
+#          enabled: true
+#          proto: manual
+#          type: bond
+#          use_interfaces:
+#          - ${_param:primary_first_nic}
+#          - ${_param:primary_second_nic}
+#          slaves: ${_param:primary_first_nic} ${_param:primary_second_nic}
+#          mode: active-backup
+#        bond0.1:
+#          name: bond0.${_param:control_vlan}
+#          enabled: true
+#          proto: manual
+#          type: vlan
+#          use_interfaces:
+#          - bond0
         br_ctl:
           enabled: true
           type: bridge
@@ -153,7 +152,7 @@ parameters:
           address: ${_param:single_address}
           netmask: ${_param:control_network_netmask}
           use_interfaces:
-          - bond0.${_param:control_vlan}
+          - ${_param:primary_first_nic}
   #   system:
   #     package:
   #       linux-image-4.8.0-39-generic:
