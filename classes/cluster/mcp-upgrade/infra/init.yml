@@ -15,19 +15,19 @@ parameters:
 
     # infra service addresses
     infra_config_hostname: cfg01
-    infra_config_address: 10.0.1.15
-    infra_config_deploy_address: 10.0.0.15
+    infra_config_address: 10.0.1.6
+    infra_config_deploy_address: 10.0.0.8
 
     cluster_domain: mcp-upgrade.local
     cluster_name: mcp-upgrade
     cluster_public_host: ${_param:openstack_proxy_address}
     infra_kvm_address: 10.0.1.240
-    infra_kvm_node01_address: 10.0.1.241
-    infra_kvm_node02_address: 10.0.1.242
-    infra_kvm_node03_address: 10.0.1.243
-    infra_kvm_node01_deploy_address: 10.0.0.241
-    infra_kvm_node02_deploy_address: 10.0.0.242
-    infra_kvm_node03_deploy_address: 10.0.0.243
+    infra_kvm_node01_address: 10.0.1.10
+    infra_kvm_node02_address: 10.0.1.11
+    infra_kvm_node03_address: 10.0.1.12
+    infra_kvm_node01_deploy_address: 10.0.0.12
+    infra_kvm_node02_deploy_address: 10.0.0.13
+    infra_kvm_node03_deploy_address: 10.0.0.14
     infra_kvm_node01_hostname: kvm01
     infra_kvm_node02_hostname: kvm02
     infra_kvm_node03_hostname: kvm03
