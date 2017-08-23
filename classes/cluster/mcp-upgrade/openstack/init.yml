@@ -4,8 +4,8 @@ parameters:
     admin_email: root@localhost
     openstack_version: mitaka
     ##Neutron osv/nodvr + dpdk
-    neutron_global_physnet_mtu: 1500
-    neutron_external_mtu: 1500
+    neutron_global_physnet_mtu: 1450
+    neutron_external_mtu: 1450
     neutron_compute_external_access: False
     neutron_control_dvr: False
     neutron_gateway_dvr: False
@@ -81,10 +81,10 @@ parameters:
     openstack_proxy_address: 10.0.1.80
     openstack_proxy_node01_address: 10.0.1.81
     openstack_proxy_node02_address: 10.0.1.82
-    openstack_control_address: 10.0.1.10
-    openstack_control_node01_address: 10.0.1.11
-    openstack_control_node02_address: 10.0.1.12
-    openstack_control_node03_address: 10.0.1.13
+    openstack_control_address: 10.0.1.20
+    openstack_control_node01_address: 10.0.1.21
+    openstack_control_node02_address: 10.0.1.22
+    openstack_control_node03_address: 10.0.1.23
     openstack_database_address: 10.0.1.50
     openstack_database_node01_address: 10.0.1.51
     openstack_database_node02_address: 10.0.1.52
